@@ -16,6 +16,8 @@ type ArtistFormState = {
   blurb: string;
 };
 
+type FormType = 'general' | 'artist' | null;
+
 const EMAIL_TO = 'chairaveclub@gmail.com';
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -36,11 +38,15 @@ export function ContactPage(): JSX.Element {
   });
   const [contactError, setContactError] = useState('');
   const [artistError, setArtistError] = useState('');
+  const [activeForm, setActiveForm] = useState<FormType>(null);
 
   const hasArtistSocial = useMemo(
     () => [artist.instagram, artist.tiktok, artist.soundcloud].some((value) => value.trim().length > 0),
     [artist]
   );
+  const inputClass =
+    'w-full border border-white/20 bg-ink/50 px-4 py-3 text-sm text-slate-100 outline-none transition focus:border-white/60';
+  const labelClass = 'mb-2 block text-xs uppercase tracking-[0.14em] text-slate-400';
 
   const openEmail = (subject: string, body: string): void => {
     const href = `mailto:${EMAIL_TO}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
@@ -118,127 +124,167 @@ export function ContactPage(): JSX.Element {
   };
 
   return (
-    <div className="space-y-10">
-      <header className="space-y-3">
-        <h1 className="font-display text-4xl font-semibold text-white">Contact</h1>
-        <p className="max-w-2xl text-slate-300">
-          Send a general note or submit an artist profile. Submissions are sent to {EMAIL_TO}.
+    <div className="mx-auto max-w-5xl space-y-8">
+      <header className="border-b border-white/10 pb-6">
+        <p className="text-xs uppercase tracking-[0.2em] text-slate-400">Group Therapy Events</p>
+        <h1 className="mt-3 font-display text-5xl font-semibold tracking-tight text-white sm:text-6xl">Contact</h1>
+        <p className="mt-4 max-w-2xl text-slate-300">
+          Reach out for collaborations, partnerships, or general questions. We usually respond within 1-2 days.
+        </p>
+        <p className="mt-3 text-sm text-slate-400">
+          All submissions route to{' '}
+          <a href={`mailto:${EMAIL_TO}`} className="text-slate-200 underline underline-offset-4 hover:text-white">
+            {EMAIL_TO}
+          </a>
+          .
         </p>
       </header>
 
-      <section className="grid gap-8 lg:grid-cols-2">
-        <article className="rounded-xl border border-white/10 bg-ink/50 p-6">
-          <h2 className="text-2xl font-semibold text-white">Contact Us</h2>
-          <form className="mt-5 space-y-4" onSubmit={submitContact}>
-            <label className="block space-y-2">
-              <span className="text-sm text-slate-300">Name</span>
-              <input
-                className="w-full rounded-md border border-white/15 bg-midnight px-3 py-2 text-sm text-white outline-none focus:border-white/40"
-                value={contact.name}
-                onChange={(e) => setContact((prev) => ({ ...prev, name: e.target.value }))}
-              />
-            </label>
-            <label className="block space-y-2">
-              <span className="text-sm text-slate-300">Email</span>
-              <input
-                className="w-full rounded-md border border-white/15 bg-midnight px-3 py-2 text-sm text-white outline-none focus:border-white/40"
-                value={contact.email}
-                onChange={(e) => setContact((prev) => ({ ...prev, email: e.target.value }))}
-              />
-            </label>
-            <label className="block space-y-2">
-              <span className="text-sm text-slate-300">Message</span>
+      <section className="grid gap-4 sm:grid-cols-2">
+        <button
+          type="button"
+          onClick={() => setActiveForm((prev) => (prev === 'general' ? null : 'general'))}
+          className={`border px-5 py-4 text-left transition ${
+            activeForm === 'general'
+              ? 'border-white/60 bg-white/10'
+              : 'border-white/15 bg-ink/40 hover:border-white/35 hover:bg-ink/60'
+          }`}
+        >
+          <p className="text-xs uppercase tracking-[0.16em] text-slate-400">01</p>
+          <p className="mt-2 text-lg font-medium text-white">General inquiry</p>
+          <p className="mt-1 text-sm text-slate-300">Questions about events, partnerships, or media.</p>
+        </button>
+
+        <button
+          type="button"
+          onClick={() => setActiveForm((prev) => (prev === 'artist' ? null : 'artist'))}
+          className={`border px-5 py-4 text-left transition ${
+            activeForm === 'artist'
+              ? 'border-white/60 bg-white/10'
+              : 'border-white/15 bg-ink/40 hover:border-white/35 hover:bg-ink/60'
+          }`}
+        >
+          <p className="text-xs uppercase tracking-[0.16em] text-slate-400">02</p>
+          <p className="mt-2 text-lg font-medium text-white">Artist collaboration</p>
+          <p className="mt-1 text-sm text-slate-300">DJ, performer, or creative looking to collaborate.</p>
+        </button>
+      </section>
+
+      {activeForm === 'general' && (
+        <article className="border border-white/15 bg-ink/50 p-6 sm:p-8">
+          <form className="space-y-5" onSubmit={submitContact}>
+            <div className="grid gap-5 sm:grid-cols-2">
+              <label className="block">
+                <span className={labelClass}>Name</span>
+                <input
+                  className={inputClass}
+                  value={contact.name}
+                  onChange={(e) => setContact((prev) => ({ ...prev, name: e.target.value }))}
+                />
+              </label>
+              <label className="block">
+                <span className={labelClass}>Email</span>
+                <input
+                  className={inputClass}
+                  value={contact.email}
+                  onChange={(e) => setContact((prev) => ({ ...prev, email: e.target.value }))}
+                />
+              </label>
+            </div>
+            <label className="block">
+              <span className={labelClass}>Message</span>
               <textarea
-                rows={5}
-                className="w-full rounded-md border border-white/15 bg-midnight px-3 py-2 text-sm text-white outline-none focus:border-white/40"
+                rows={6}
+                className={inputClass}
                 value={contact.message}
                 onChange={(e) => setContact((prev) => ({ ...prev, message: e.target.value }))}
               />
             </label>
-            {contactError && <p className="text-sm text-red-300">{contactError}</p>}
-            <button
-              type="submit"
-              className="rounded-md bg-white px-4 py-2 text-sm font-semibold text-midnight transition hover:bg-slate-200"
-            >
-              Send Contact Email
+            {contactError && <p className="text-sm text-rose-300">{contactError}</p>}
+            <button type="submit" className="border border-white/30 px-5 py-3 text-sm font-semibold text-white hover:bg-white/10">
+              Send General Inquiry
             </button>
           </form>
         </article>
+      )}
 
-        <article className="rounded-xl border border-white/10 bg-ink/50 p-6">
-          <h2 className="text-2xl font-semibold text-white">Artist Join Form</h2>
-          <form className="mt-5 space-y-4" onSubmit={submitArtist}>
-            <label className="block space-y-2">
-              <span className="text-sm text-slate-300">Artist/Stage Name</span>
+      {activeForm === 'artist' && (
+        <article className="border border-white/15 bg-ink/50 p-6 sm:p-8">
+          <form className="space-y-5" onSubmit={submitArtist}>
+            <div className="grid gap-5 sm:grid-cols-2">
+              <label className="block">
+                <span className={labelClass}>Artist / Stage Name</span>
+                <input
+                  className={inputClass}
+                  value={artist.artistName}
+                  onChange={(e) => setArtist((prev) => ({ ...prev, artistName: e.target.value }))}
+                />
+              </label>
+              <label className="block">
+                <span className={labelClass}>Contact Email</span>
+                <input
+                  className={inputClass}
+                  value={artist.contactEmail}
+                  onChange={(e) => setArtist((prev) => ({ ...prev, contactEmail: e.target.value }))}
+                />
+              </label>
+            </div>
+
+            <label className="block">
+              <span className={labelClass}>Phone (optional)</span>
               <input
-                className="w-full rounded-md border border-white/15 bg-midnight px-3 py-2 text-sm text-white outline-none focus:border-white/40"
-                value={artist.artistName}
-                onChange={(e) => setArtist((prev) => ({ ...prev, artistName: e.target.value }))}
-              />
-            </label>
-            <label className="block space-y-2">
-              <span className="text-sm text-slate-300">Contact Email</span>
-              <input
-                className="w-full rounded-md border border-white/15 bg-midnight px-3 py-2 text-sm text-white outline-none focus:border-white/40"
-                value={artist.contactEmail}
-                onChange={(e) => setArtist((prev) => ({ ...prev, contactEmail: e.target.value }))}
-              />
-            </label>
-            <label className="block space-y-2">
-              <span className="text-sm text-slate-300">Phone (optional)</span>
-              <input
-                className="w-full rounded-md border border-white/15 bg-midnight px-3 py-2 text-sm text-white outline-none focus:border-white/40"
+                className={inputClass}
                 value={artist.phone}
                 onChange={(e) => setArtist((prev) => ({ ...prev, phone: e.target.value }))}
               />
             </label>
-            <div className="grid gap-3 sm:grid-cols-3">
-              <label className="block space-y-2">
-                <span className="text-sm text-slate-300">Instagram</span>
+
+            <div className="grid gap-5 sm:grid-cols-3">
+              <label className="block">
+                <span className={labelClass}>Instagram</span>
                 <input
-                  className="w-full rounded-md border border-white/15 bg-midnight px-3 py-2 text-sm text-white outline-none focus:border-white/40"
+                  className={inputClass}
                   value={artist.instagram}
                   onChange={(e) => setArtist((prev) => ({ ...prev, instagram: e.target.value }))}
                 />
               </label>
-              <label className="block space-y-2">
-                <span className="text-sm text-slate-300">TikTok</span>
+              <label className="block">
+                <span className={labelClass}>TikTok</span>
                 <input
-                  className="w-full rounded-md border border-white/15 bg-midnight px-3 py-2 text-sm text-white outline-none focus:border-white/40"
+                  className={inputClass}
                   value={artist.tiktok}
                   onChange={(e) => setArtist((prev) => ({ ...prev, tiktok: e.target.value }))}
                 />
               </label>
-              <label className="block space-y-2">
-                <span className="text-sm text-slate-300">SoundCloud</span>
+              <label className="block">
+                <span className={labelClass}>SoundCloud</span>
                 <input
-                  className="w-full rounded-md border border-white/15 bg-midnight px-3 py-2 text-sm text-white outline-none focus:border-white/40"
+                  className={inputClass}
                   value={artist.soundcloud}
                   onChange={(e) => setArtist((prev) => ({ ...prev, soundcloud: e.target.value }))}
                 />
               </label>
             </div>
-            <label className="block space-y-2">
-              <span className="text-sm text-slate-300">Short Blurb (optional, max 500 chars)</span>
+
+            <label className="block">
+              <span className={labelClass}>Short Blurb (optional, max 500 chars)</span>
               <textarea
-                rows={4}
+                rows={5}
                 maxLength={500}
-                className="w-full rounded-md border border-white/15 bg-midnight px-3 py-2 text-sm text-white outline-none focus:border-white/40"
+                className={inputClass}
                 value={artist.blurb}
                 onChange={(e) => setArtist((prev) => ({ ...prev, blurb: e.target.value }))}
               />
             </label>
+
             <p className="text-xs text-slate-400">At least one social handle is required.</p>
-            {artistError && <p className="text-sm text-red-300">{artistError}</p>}
-            <button
-              type="submit"
-              className="rounded-md bg-white px-4 py-2 text-sm font-semibold text-midnight transition hover:bg-slate-200"
-            >
+            {artistError && <p className="text-sm text-rose-300">{artistError}</p>}
+            <button type="submit" className="border border-white/30 px-5 py-3 text-sm font-semibold text-white hover:bg-white/10">
               Send Artist Submission
             </button>
           </form>
         </article>
-      </section>
+      )}
     </div>
   );
 }
