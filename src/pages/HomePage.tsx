@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { trackPartifulClick } from '../lib/analytics';
 import { formatEventDate } from '../lib/date';
 import { getUpcomingEvents } from '../lib/eventsService';
@@ -22,7 +23,7 @@ export function HomePage(): JSX.Element {
           <div className="flex gap-6 text-sm text-slate-200">
             <button type="button" onClick={() => scrollToSection('events')} className="hover:text-white">Events</button>
             <button type="button" onClick={() => scrollToSection('about')} className="hover:text-white">About</button>
-            <button type="button" onClick={() => scrollToSection('contact')} className="hover:text-white">Contact</button>
+            <Link to="/contact" className="hover:text-white">Contact</Link>
           </div>
         </div>
       </nav>
@@ -125,25 +126,12 @@ export function HomePage(): JSX.Element {
         </div>
       </section>
 
-      <section id="contact" className="px-6 py-24 sm:px-8">
-        <div className="mx-auto grid w-full max-w-6xl gap-12 lg:grid-cols-2">
-          <div>
-            <h2 className="font-display text-4xl font-bold tracking-tight text-white sm:text-5xl">Get in touch</h2>
-            <p className="mt-5 max-w-lg text-slate-300">
-              Want to collaborate, host, or share a future lineup? Reach us directly and we&apos;ll follow up.
-            </p>
-          </div>
-          <div className="space-y-4 rounded-sm border border-white/10 bg-ink/40 p-6">
-            <a className="block border border-white/10 px-4 py-3 text-slate-200 hover:border-white/30" href="mailto:hello@grouptherapyevents.com">
-              hello@grouptherapyevents.com
-            </a>
-            <a className="block border border-white/10 px-4 py-3 text-slate-200 hover:border-white/30" href="https://instagram.com/grouptherapy" target="_blank" rel="noreferrer">
-              Instagram
-            </a>
-            <a className="block border border-white/10 px-4 py-3 text-slate-200 hover:border-white/30" href="https://partiful.com" target="_blank" rel="noreferrer">
-              Partiful
-            </a>
-          </div>
+      <section className="px-6 py-20 sm:px-8">
+        <div className="mx-auto flex w-full max-w-6xl flex-wrap items-center justify-between gap-4 border-t border-white/10 pt-8">
+          <p className="text-slate-300">Questions, collabs, or artist submissions.</p>
+          <Link to="/contact" className="rounded-md border border-white/20 px-4 py-2 text-sm font-semibold text-white hover:bg-white/10">
+            Go to Contact Page
+          </Link>
         </div>
       </section>
     </div>

@@ -14,6 +14,7 @@ export function SiteLayout(): JSX.Element {
               <NavLink to="/" className="hover:text-white">Home</NavLink>
               <NavLink to="/events" className="hover:text-white">Events</NavLink>
               <NavLink to="/about" className="hover:text-white">About</NavLink>
+              <NavLink to="/contact" className="hover:text-white">Contact</NavLink>
             </nav>
           </div>
         </header>
