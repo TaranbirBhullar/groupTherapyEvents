@@ -14,6 +14,15 @@ npm run dev
 - Update event text/data in `src/data/events.json`.
 - Add images under `public/events/<event-slug>/` and reference them via `/events/...` path.
 
+## Contributor skills
+
+Repo-local skills for non-technical updates live in `skills/`:
+
+- `skills/run-local-site`: install deps and run local dev server
+- `skills/add-event-entry`: add a new event with correct schema/path conventions
+- `skills/edit-event-entry`: safely update an existing event
+- `skills/validate-event-update`: validate event JSON/assets before commit
+
 ## Analytics
 
 Set `VITE_GA_MEASUREMENT_ID` in a local `.env.local` file or GitHub repo secret.

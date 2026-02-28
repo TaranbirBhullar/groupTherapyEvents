@@ -1,0 +1,4 @@
+interface:
+  display_name: "Add Event Entry"
+  short_description: "Add an event to events.json with valid fields and paths."
+  default_prompt: "Add a new event entry and prepare its image folder for Group Therapy Events."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Edit Event Entry"
+  short_description: "Update event text, dates, links, and status safely."
+  default_prompt: "Edit an existing event entry in events.json and keep formatting consistent."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Validate Event Update"
+  short_description: "Validate JSON, image paths, and build before commit."
+  default_prompt: "Validate event updates and run preflight checks before deploying."

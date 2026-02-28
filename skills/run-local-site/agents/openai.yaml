@@ -1,0 +1,4 @@
+interface:
+  display_name: "Run Local Site"
+  short_description: "Set up dependencies and run the site locally."
+  default_prompt: "Set up this repo and start the local development server."
