@@ -45,7 +45,8 @@ export function HomePage(): JSX.Element {
             <span className="text-cyanflash">becomes community.</span>
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-slate-200">
-            A focused event board for intentional nights. See what&apos;s next and open Partiful instantly.
+            Group Therapy Events is a community-driven collective curating safe, inclusive spaces for connection through
+            music, movement, and shared experiences.
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
             <button
@@ -71,9 +72,10 @@ export function HomePage(): JSX.Element {
           <div>
             <h2 className="font-display text-4xl font-bold tracking-tight text-white sm:text-5xl">Who we are</h2>
             <p className="mt-6 text-lg text-slate-200">
-              Group Therapy is more than events. It&apos;s a shared space for connection through sound, movement, and culture.
+              We&apos;re not a medical practice. We&apos;re a social movement: the idea that the best form of therapy can be found
+              in authentic human connection, sound, and movement.
             </p>
-            <p className="mt-4 text-base text-slate-400">Built by community, for community.</p>
+            <p className="mt-4 text-base text-slate-400">Authentic, supportive, grounded, and slightly rebellious.</p>
           </div>
           <div className="h-[380px] overflow-hidden rounded-sm border border-white/10">
             <img
@@ -82,6 +84,27 @@ export function HomePage(): JSX.Element {
               className="h-full w-full object-cover"
             />
           </div>
+        </div>
+      </section>
+
+      <section className="px-6 pb-24 sm:px-8">
+        <div className="mx-auto grid w-full max-w-6xl gap-6 md:grid-cols-2">
+          <article className="rounded-sm border border-white/10 bg-ink/30 p-6">
+            <p className="text-xs uppercase tracking-[0.18em] text-slate-400">Parent Brand</p>
+            <h3 className="mt-3 text-2xl font-semibold text-white">Group Therapy Events</h3>
+            <p className="mt-3 text-slate-300">
+              A lifestyle events collective on a mission to help people disconnect from digital overload and reconnect
+              with each other through curated gatherings.
+            </p>
+          </article>
+          <article className="rounded-sm border border-white/10 bg-ink/30 p-6">
+            <p className="text-xs uppercase tracking-[0.18em] text-slate-400">Flagship Series</p>
+            <h3 className="mt-3 text-2xl font-semibold text-white">Chai Rave Club</h3>
+            <p className="mt-3 text-slate-300">
+              Our neon-traditional nightlife format where tea ritual meets underground electronic energy: aromatic,
+              high-sensory, and community-first.
+            </p>
+          </article>
         </div>
       </section>
 
