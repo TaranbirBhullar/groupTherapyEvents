@@ -1,0 +1,4 @@
+interface:
+  display_name: "Sync Partiful Events"
+  short_description: "Fetch organizer events from Partiful and update events.json automatically."
+  default_prompt: "Refresh local events data from a Partiful organizer link and download poster images."
