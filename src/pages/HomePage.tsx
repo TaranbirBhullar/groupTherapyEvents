@@ -11,24 +11,6 @@ export function HomePage(): JSX.Element {
 
   return (
     <div className="bg-midnight text-slate-100">
-      <nav className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-midnight/70 px-6 py-5 backdrop-blur sm:px-8">
-        <div className="mx-auto flex w-full max-w-6xl items-center justify-between">
-          <button
-            type="button"
-            onClick={() => scrollToSection('top')}
-            className="font-display text-xl font-bold tracking-tight text-white"
-          >
-            GROUP <span className="text-acid">THERAPY</span>
-          </button>
-          <div className="flex gap-6 text-sm text-slate-200">
-            <button type="button" onClick={() => scrollToSection('events')} className="hover:text-white">Events</button>
-            <Link to="/chai-rave" className="hover:text-white">Chai Rave</Link>
-            <button type="button" onClick={() => scrollToSection('about')} className="hover:text-white">About</button>
-            <Link to="/contact" className="hover:text-white">Contact</Link>
-          </div>
-        </div>
-      </nav>
-
       <section id="top" className="relative flex min-h-screen items-center overflow-hidden px-6 pt-24 sm:px-8">
         <div
           className="absolute inset-0 bg-cover bg-center"
