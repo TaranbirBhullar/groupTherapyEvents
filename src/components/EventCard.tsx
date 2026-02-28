@@ -16,7 +16,7 @@ export function EventCard({ event, priorityPartiful = false }: EventCardProps): 
       : 'bg-acid/20 text-acid border border-acid/40';
 
   return (
-    <article className="relative overflow-hidden rounded-2xl border border-cyanflash/20 bg-ink/80 shadow-neon transition hover:-translate-y-0.5">
+    <article className="relative overflow-hidden rounded-xl border border-white/10 bg-ink shadow-neon transition">
       <Link to={`/events/${event.slug}`} className="absolute inset-0 z-10" aria-label={`View details for ${event.title}`} />
       <img src={event.image} alt={event.title} className="h-52 w-full object-cover" />
       <div className="space-y-4 p-5">
@@ -26,9 +26,9 @@ export function EventCard({ event, priorityPartiful = false }: EventCardProps): 
             {event.status}
           </span>
         </div>
-        <p className="text-sm text-slate-200">{formatEventDate(event.datetime, event.timezone)}</p>
-        <p className="text-sm text-slate-300">{event.location}</p>
-        <p className="text-sm text-slate-200">{event.description}</p>
+        <p className="text-sm text-slate-300">{formatEventDate(event.datetime, event.timezone)}</p>
+        <p className="text-sm text-slate-400">{event.location}</p>
+        <p className="text-sm text-slate-300">{event.description}</p>
         <div className="relative z-20 flex items-center gap-3">
           <a
             href={event.partifulUrl}
@@ -36,14 +36,14 @@ export function EventCard({ event, priorityPartiful = false }: EventCardProps): 
             rel="noreferrer"
             onClick={() => trackPartifulClick(event.title, event.slug)}
             className={`rounded-lg px-4 py-2 text-sm font-bold uppercase tracking-wide text-midnight transition ${
-              priorityPartiful ? 'bg-acid hover:bg-lime-300' : 'bg-cyanflash hover:bg-sky-300'
+              priorityPartiful ? 'bg-acid hover:bg-slate-300' : 'bg-cyanflash hover:bg-slate-400'
             }`}
           >
             Open on Partiful
           </a>
           <Link
             to={`/events/${event.slug}`}
-            className="rounded-lg border border-slate-300/30 px-3 py-2 text-sm font-medium text-slate-200 transition hover:border-cyanflash"
+            className="rounded-lg border border-white/20 px-3 py-2 text-sm font-medium text-slate-200 transition hover:border-white/40"
           >
             Details
           </Link>

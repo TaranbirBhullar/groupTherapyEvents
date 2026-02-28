@@ -5,21 +5,21 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        display: ['"Cormorant Garamond"', 'serif'],
+        display: ['"Manrope"', 'sans-serif'],
         body: ['"Manrope"', 'sans-serif']
       },
       colors: {
-        midnight: '#03050b',
-        ink: '#0a1020',
-        cyanflash: '#7ba8b4',
-        acid: '#b8ab8a',
-        lava: '#7a5f6d'
+        midnight: '#07090d',
+        ink: '#10141b',
+        cyanflash: '#a8b3c4',
+        acid: '#d1d5db',
+        lava: '#6b7280'
       },
       boxShadow: {
-        neon: '0 0 0 1px rgba(123,168,180,0.3), 0 18px 42px rgba(8,12,24,0.62)'
+        neon: '0 1px 2px rgba(0, 0, 0, 0.25)'
       },
       backgroundImage: {
-        mesh: 'radial-gradient(circle at 20% 20%, rgba(123,168,180,0.13), transparent 34%), radial-gradient(circle at 80% 10%, rgba(122,95,109,0.2), transparent 34%), radial-gradient(circle at 70% 80%, rgba(184,171,138,0.12), transparent 36%)'
+        mesh: 'none'
       }
     }
   },
