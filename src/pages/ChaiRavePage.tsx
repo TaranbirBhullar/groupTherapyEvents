@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { chaiRaveInstagramProfile } from '../data/chaiRaveInstagram';
+import { trackPartifulClick } from '../lib/analytics';
 import { formatEventDate } from '../lib/date';
 import { getPastEvents } from '../lib/eventsService';
 
@@ -32,6 +33,15 @@ export function ChaiRavePage(): JSX.Element {
               </p>
               <h3 className="mt-2 text-xl font-semibold text-white">{event.title}</h3>
               <p className="mt-2 text-sm text-slate-300">{event.location}</p>
+              <a
+                href={event.partifulUrl}
+                target="_blank"
+                rel="noreferrer"
+                onClick={() => trackPartifulClick(event.title, event.slug)}
+                className="mt-4 inline-flex rounded border border-white/20 px-3 py-2 text-xs font-semibold text-slate-200 transition hover:bg-white/10"
+              >
+                Open Partiful
+              </a>
             </article>
           ))}
         </div>

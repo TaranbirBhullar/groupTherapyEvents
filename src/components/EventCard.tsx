@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import type { Event } from '../types/event';
 import { formatEventDate } from '../lib/date';
 import { trackPartifulClick } from '../lib/analytics';
@@ -17,7 +16,14 @@ export function EventCard({ event, priorityPartiful = false }: EventCardProps): 
 
   return (
     <article className="relative overflow-hidden rounded-xl border border-white/10 bg-ink transition hover:border-white/20">
-      <Link to={`/events/${event.slug}`} className="absolute inset-0 z-10" aria-label={`View details for ${event.title}`} />
+      <a
+        href={event.partifulUrl}
+        target="_blank"
+        rel="noreferrer"
+        onClick={() => trackPartifulClick(event.title, event.slug)}
+        className="absolute inset-0 z-10"
+        aria-label={`Open ${event.title} on Partiful`}
+      />
       <img src={event.image} alt={event.title} className="h-52 w-full object-cover" />
       <div className="space-y-4 p-5">
         <div className="flex items-center justify-between gap-3">
@@ -41,12 +47,6 @@ export function EventCard({ event, priorityPartiful = false }: EventCardProps): 
           >
             Open Partiful
           </a>
-          <Link
-            to={`/events/${event.slug}`}
-            className="rounded-lg border border-white/20 px-3 py-2 text-sm font-medium text-slate-200 transition hover:border-white/40"
-          >
-            View details
-          </Link>
         </div>
       </div>
     </article>
