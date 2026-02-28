@@ -1,4 +1,30 @@
 export function AboutPage(): JSX.Element {
+  const founders = [
+    {
+      name: 'Founder Name',
+      role: 'Founder',
+      bio: 'Leads creative direction and community programming across Group Therapy Events.',
+    },
+    {
+      name: 'Co-Founder Name',
+      role: 'Co-Founder',
+      bio: 'Shapes partnerships, operations, and long-term growth for the collective.',
+    },
+  ];
+
+  const partners = [
+    {
+      name: 'Community Partner',
+      type: 'Venue / Collective',
+      note: 'Supports event experiences and local community activation.',
+    },
+    {
+      name: 'Culture Partner',
+      type: 'Brand / Media',
+      note: 'Collaborates on storytelling, artist visibility, and campaign reach.',
+    },
+  ];
+
   return (
     <div className="mx-auto max-w-5xl space-y-8">
       <header className="border-b border-white/10 pb-6">
@@ -43,6 +69,31 @@ export function AboutPage(): JSX.Element {
             <p className="text-xs uppercase tracking-[0.14em] text-slate-400">The Sound</p>
             <p className="mt-2 text-sm text-slate-300">Curated underground electronic music at peak energy.</p>
           </article>
+        </div>
+      </section>
+
+      <section className="border border-white/15 bg-ink/50 p-6 sm:p-8">
+        <p className="text-xs uppercase tracking-[0.16em] text-slate-400">People & Partners</p>
+        <h2 className="mt-2 text-3xl font-semibold text-white">Founders and Community Partners</h2>
+
+        <div className="mt-6 grid gap-4 md:grid-cols-2">
+          {founders.map((person) => (
+            <article key={person.name} className="border border-white/10 bg-midnight/40 p-4">
+              <p className="text-xs uppercase tracking-[0.14em] text-slate-400">{person.role}</p>
+              <h3 className="mt-2 text-xl font-semibold text-white">{person.name}</h3>
+              <p className="mt-2 text-sm text-slate-300">{person.bio}</p>
+            </article>
+          ))}
+        </div>
+
+        <div className="mt-6 grid gap-4 md:grid-cols-2">
+          {partners.map((partner) => (
+            <article key={partner.name} className="border border-white/10 bg-midnight/40 p-4">
+              <p className="text-xs uppercase tracking-[0.14em] text-slate-400">{partner.type}</p>
+              <h3 className="mt-2 text-xl font-semibold text-white">{partner.name}</h3>
+              <p className="mt-2 text-sm text-slate-300">{partner.note}</p>
+            </article>
+          ))}
         </div>
       </section>
 
