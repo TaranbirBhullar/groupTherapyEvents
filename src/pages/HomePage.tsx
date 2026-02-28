@@ -22,6 +22,7 @@ export function HomePage(): JSX.Element {
           </button>
           <div className="flex gap-6 text-sm text-slate-200">
             <button type="button" onClick={() => scrollToSection('events')} className="hover:text-white">Events</button>
+            <Link to="/chai-rave" className="hover:text-white">Chai Rave</Link>
             <button type="button" onClick={() => scrollToSection('about')} className="hover:text-white">About</button>
             <Link to="/contact" className="hover:text-white">Contact</Link>
           </div>
@@ -104,6 +105,9 @@ export function HomePage(): JSX.Element {
               Our neon-traditional nightlife format where tea ritual meets underground electronic energy: aromatic,
               high-sensory, and community-first.
             </p>
+            <Link to="/chai-rave" className="mt-4 inline-block text-sm font-semibold text-slate-200 hover:text-white">
+              Explore Chai Rave Page
+            </Link>
           </article>
         </div>
       </section>

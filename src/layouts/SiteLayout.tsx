@@ -13,6 +13,7 @@ export function SiteLayout(): JSX.Element {
             <nav className="flex items-center gap-5 text-sm font-medium text-slate-200">
               <NavLink to="/" className="hover:text-white">Home</NavLink>
               <NavLink to="/events" className="hover:text-white">Events</NavLink>
+              <NavLink to="/chai-rave" className="hover:text-white">Chai Rave</NavLink>
               <NavLink to="/about" className="hover:text-white">About</NavLink>
               <NavLink to="/contact" className="hover:text-white">Contact</NavLink>
             </nav>

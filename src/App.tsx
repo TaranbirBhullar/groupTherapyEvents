@@ -1,6 +1,7 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { SiteLayout } from './layouts/SiteLayout';
 import { AboutPage } from './pages/AboutPage';
+import { ChaiRavePage } from './pages/ChaiRavePage';
 import { ContactPage } from './pages/ContactPage';
 import { EventDetailPage } from './pages/EventDetailPage';
 import { EventsPage } from './pages/EventsPage';
@@ -14,6 +15,7 @@ export default function App(): JSX.Element {
         <Route path="/" element={<HomePage />} />
         <Route path="/events" element={<EventsPage />} />
         <Route path="/events/:slug" element={<EventDetailPage />} />
+        <Route path="/chai-rave" element={<ChaiRavePage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/home" element={<Navigate to="/" replace />} />
