@@ -9,15 +9,15 @@ export function EventDetailPage(): JSX.Element {
 
   if (!event) {
     return (
-      <div className="space-y-4 rounded-2xl border border-red-300/30 bg-red-950/30 p-6">
+      <div className="space-y-4 border border-red-300/30 bg-red-950/30 p-6">
         <h1 className="font-display text-2xl font-bold">Event not found</h1>
-        <Link to="/events" className="text-cyanflash">Back to events</Link>
+        <Link to="/events" className="text-slate-200 hover:text-white">Back to events</Link>
       </div>
     );
   }
 
   return (
-    <article className="overflow-hidden rounded-3xl border border-cyanflash/20 bg-ink/80 shadow-neon">
+    <article className="overflow-hidden border border-white/10 bg-ink/80">
       <img src={event.image} alt={event.title} className="h-72 w-full object-cover sm:h-96" />
       <div className="space-y-6 p-6 sm:p-8">
         <header className="space-y-3">
@@ -28,10 +28,10 @@ export function EventDetailPage(): JSX.Element {
         <p className="max-w-3xl text-slate-200">{event.description}</p>
 
         <div>
-          <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-cyanflash">Lineup</p>
+          <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-slate-400">Lineup</p>
           <ul className="flex flex-wrap gap-2">
             {event.lineup.map((artist) => (
-              <li key={artist} className="rounded-full border border-slate-300/30 px-3 py-1 text-sm text-slate-200">
+              <li key={artist} className="border border-slate-300/30 px-3 py-1 text-sm text-slate-200">
                 {artist}
               </li>
             ))}
@@ -44,11 +44,11 @@ export function EventDetailPage(): JSX.Element {
             target="_blank"
             rel="noreferrer"
             onClick={() => trackPartifulClick(event.title, event.slug)}
-            className="rounded-lg bg-acid px-5 py-3 text-sm font-bold uppercase tracking-wide text-midnight hover:bg-lime-300"
+            className="bg-acid px-5 py-3 text-sm font-bold uppercase tracking-wide text-midnight hover:bg-lime-300"
           >
             Open on Partiful
           </a>
-          <Link to="/events" className="rounded-lg border border-slate-300/30 px-4 py-3 text-sm font-semibold text-slate-200 hover:border-cyanflash">
+          <Link to="/events" className="border border-slate-300/30 px-4 py-3 text-sm font-semibold text-slate-200 hover:border-white/60">
             Back to Events
           </Link>
         </div>

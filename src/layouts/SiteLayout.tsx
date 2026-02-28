@@ -8,7 +8,9 @@ export function SiteLayout(): JSX.Element {
     <div className="min-h-screen">
       <header className="sticky top-0 z-30 border-b border-white/10 bg-midnight/90 backdrop-blur">
         <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-          <Link to="/" className="font-display text-base font-semibold tracking-wide text-white">Group Therapy Events</Link>
+          <Link to="/" className="font-display text-xl font-bold tracking-tight text-white">
+            GROUP <span className="text-acid">THERAPY</span> EVENTS
+          </Link>
           <nav className="flex items-center gap-5 text-sm font-medium text-slate-200">
             <NavLink to="/" className="hover:text-white">Home</NavLink>
             <NavLink to="/events" className="hover:text-white">Events</NavLink>

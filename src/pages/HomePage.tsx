@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom';
 import { trackPartifulClick } from '../lib/analytics';
 import { formatEventDate } from '../lib/date';
-import { getUpcomingEvents } from '../lib/eventsService';
+import { getPastEvents, getUpcomingEvents } from '../lib/eventsService';
 
 export function HomePage(): JSX.Element {
   const featuredEvents = getUpcomingEvents(3);
+  const pastEvents = getPastEvents().slice(0, 3);
   const scrollToSection = (id: string): void => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
@@ -34,14 +35,14 @@ export function HomePage(): JSX.Element {
             <button
               type="button"
               onClick={() => scrollToSection('events')}
-              className="rounded-md bg-acid px-6 py-3 text-sm font-semibold text-midnight transition hover:bg-[#c49a58]"
+              className="bg-acid px-6 py-3 text-sm font-semibold text-midnight transition hover:bg-[#c49a58]"
             >
               View Upcoming Events
             </button>
             <button
               type="button"
               onClick={() => scrollToSection('about')}
-              className="rounded-md border border-white/30 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
+              className="border border-white/30 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
             >
               Explore Our World
             </button>
@@ -59,7 +60,7 @@ export function HomePage(): JSX.Element {
             </p>
             <p className="mt-4 text-base text-slate-400">Authentic, supportive, grounded, and slightly rebellious.</p>
           </div>
-          <div className="h-[380px] overflow-hidden rounded-sm border border-white/10">
+          <div className="h-[380px] overflow-hidden border border-white/10">
             <img
               src="/images/brand-inspiration.jpg"
               alt="Abstract landscape textures"
@@ -71,7 +72,7 @@ export function HomePage(): JSX.Element {
 
       <section className="px-6 pb-24 sm:px-8">
         <div className="mx-auto grid w-full max-w-6xl gap-6 md:grid-cols-2">
-          <article className="rounded-sm border border-white/10 bg-ink/30 p-6">
+          <article className="border border-white/10 bg-ink/30 p-6">
             <p className="text-xs uppercase tracking-[0.18em] text-slate-400">Parent Brand</p>
             <h3 className="mt-3 text-2xl font-semibold text-white">Group Therapy Events</h3>
             <p className="mt-3 text-slate-300">
@@ -79,7 +80,7 @@ export function HomePage(): JSX.Element {
               with each other through curated gatherings.
             </p>
           </article>
-          <article className="rounded-sm border border-acid/35 bg-ink/30 p-6">
+          <article className="border border-acid/35 bg-ink/30 p-6">
             <p className="text-xs uppercase tracking-[0.18em] text-slate-400">Flagship Series</p>
             <h3 className="mt-3 text-2xl font-semibold text-white">Chai Rave Club</h3>
             <p className="mt-3 text-slate-300">
@@ -123,7 +124,48 @@ export function HomePage(): JSX.Element {
                     target="_blank"
                     rel="noreferrer"
                     onClick={() => trackPartifulClick(event.title, event.slug)}
-                    className="inline-flex items-center justify-center rounded-md bg-acid px-5 py-3 text-sm font-semibold text-midnight transition hover:bg-[#c49a58]"
+                    className="inline-flex items-center justify-center bg-acid px-5 py-3 text-sm font-semibold text-midnight transition hover:bg-[#c49a58]"
+                  >
+                    Open Partiful
+                  </a>
+                </article>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section className="px-6 py-24 sm:px-8">
+        <div className="mx-auto w-full max-w-6xl">
+          <h2 className="text-center font-display text-4xl font-bold tracking-tight text-white sm:text-5xl">
+            Recent past events
+          </h2>
+          <div className="mt-12 space-y-5">
+            {pastEvents.map((event) => {
+              const dateObj = new Date(event.datetime);
+              const day = new Intl.DateTimeFormat('en-US', { day: '2-digit' }).format(dateObj);
+              const month = new Intl.DateTimeFormat('en-US', { month: 'short' }).format(dateObj).toUpperCase();
+
+              return (
+                <article
+                  key={event.id}
+                  className="grid gap-6 border border-white/10 bg-midnight/40 p-6 transition hover:border-white/30 md:grid-cols-[88px_1fr_auto] md:items-center"
+                >
+                  <div className="text-center">
+                    <p className="font-display text-5xl font-bold text-slate-300">{day}</p>
+                    <p className="text-xs tracking-[0.2em] text-slate-400">{month}</p>
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-semibold text-white">{event.title}</h3>
+                    <p className="mt-2 text-sm text-slate-300">{event.location}</p>
+                    <p className="text-sm text-slate-400">{formatEventDate(event.datetime, event.timezone)}</p>
+                  </div>
+                  <a
+                    href={event.partifulUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    onClick={() => trackPartifulClick(event.title, event.slug)}
+                    className="inline-flex items-center justify-center border border-white/30 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
                   >
                     Open Partiful
                   </a>
@@ -137,7 +179,7 @@ export function HomePage(): JSX.Element {
       <section className="px-6 py-20 sm:px-8">
         <div className="mx-auto flex w-full max-w-6xl flex-wrap items-center justify-between gap-4 border-t border-white/10 pt-8">
           <p className="text-slate-300">Questions, collabs, or artist submissions.</p>
-          <Link to="/contact" className="rounded-md border border-white/20 px-4 py-2 text-sm font-semibold text-white hover:bg-white/10">
+          <Link to="/contact" className="border border-white/20 px-4 py-2 text-sm font-semibold text-white hover:bg-white/10">
             Go to Contact Page
           </Link>
         </div>
