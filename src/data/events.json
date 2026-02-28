@@ -1,0 +1,54 @@
+[
+  {
+    "id": "evt_001",
+    "slug": "pulse-harbor",
+    "title": "Pulse Harbor",
+    "datetime": "2026-03-14T22:00:00",
+    "timezone": "America/Los_Angeles",
+    "location": "Pier Block 7, San Francisco, CA",
+    "lineup": ["DJ Lumen", "NITE//SHIFT", "Kira Volt"],
+    "description": "Industrial dock rave with laser canopy, open-air bass, and sunrise chill zone.",
+    "partifulUrl": "https://partiful.com/e/pulse-harbor",
+    "image": "/events/pulse-harbor/poster.svg",
+    "status": "upcoming"
+  },
+  {
+    "id": "evt_002",
+    "slug": "neon-temple",
+    "title": "Neon Temple",
+    "datetime": "2026-03-28T21:30:00",
+    "timezone": "America/Los_Angeles",
+    "location": "The Foundry, Oakland, CA",
+    "lineup": ["Rumi Rave", "Acid Bloom", "Bass Cartel"],
+    "description": "A warehouse ritual with hard groove rooms, immersive visuals, and glowing art installations.",
+    "partifulUrl": "https://partiful.com/e/neon-temple",
+    "image": "/events/neon-temple/poster.svg",
+    "status": "upcoming"
+  },
+  {
+    "id": "evt_003",
+    "slug": "sunrise-static",
+    "title": "Sunrise Static",
+    "datetime": "2026-04-11T23:00:00",
+    "timezone": "America/Los_Angeles",
+    "location": "District 12, San Jose, CA",
+    "lineup": ["Nova K", "808 Witch", "Holo Heat"],
+    "description": "Late-night breakbeats and high-contrast visuals built for an all-night dance floor.",
+    "partifulUrl": "https://partiful.com/e/sunrise-static",
+    "image": "/events/sunrise-static/poster.svg",
+    "status": "upcoming"
+  },
+  {
+    "id": "evt_004",
+    "slug": "warehouse-echo",
+    "title": "Warehouse Echo",
+    "datetime": "2026-01-18T22:00:00",
+    "timezone": "America/Los_Angeles",
+    "location": "Dockline Studios, Oakland, CA",
+    "lineup": ["Mira Flux", "Code Rave", "Subphase"],
+    "description": "Concrete cavern energy, pressure-tested subwoofers, and a packed underground crowd.",
+    "partifulUrl": "https://partiful.com/e/warehouse-echo",
+    "image": "/events/warehouse-echo/poster.svg",
+    "status": "past"
+  }
+]

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" fill="none">
+  <rect width="1200" height="800" fill="#130B22"/>
+  <circle cx="980" cy="170" r="240" fill="#FF5A3D" fill-opacity="0.35"/>
+  <circle cx="220" cy="620" r="210" fill="#17D3FF" fill-opacity="0.35"/>
+  <text x="80" y="680" fill="#fff" font-size="92" font-family="sans-serif" font-weight="700">NEON TEMPLE</text>
+</svg>
