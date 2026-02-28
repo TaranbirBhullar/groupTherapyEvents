@@ -9,7 +9,7 @@
 }
 
 body {
-  @apply m-0 min-h-screen bg-midnight text-slate-100 font-body antialiased leading-relaxed;
+  @apply m-0 min-h-screen bg-midnight bg-mesh text-slate-100 font-body antialiased leading-relaxed;
 }
 
 #root {

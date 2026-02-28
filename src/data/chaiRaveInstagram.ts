@@ -8,4 +8,4 @@ export interface InstagramPost {
 // Format example: https://www.instagram.com/p/POST_ID/
 export const chaiRaveInstagramPosts: InstagramPost[] = [];
 
-export const chaiRaveInstagramProfile = 'https://www.instagram.com/grouptherapy/';
+export const chaiRaveInstagramProfile = 'https://www.instagram.com/chairaveclub';

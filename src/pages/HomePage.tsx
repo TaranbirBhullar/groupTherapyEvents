@@ -18,7 +18,7 @@ export function HomePage(): JSX.Element {
             onClick={() => scrollToSection('top')}
             className="font-display text-xl font-bold tracking-tight text-white"
           >
-            GROUP <span className="text-cyanflash">THERAPY</span>
+            GROUP <span className="text-acid">THERAPY</span>
           </button>
           <div className="flex gap-6 text-sm text-slate-200">
             <button type="button" onClick={() => scrollToSection('events')} className="hover:text-white">Events</button>
@@ -33,17 +33,16 @@ export function HomePage(): JSX.Element {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage:
-              "url('https://images.unsplash.com/photo-1571266028243-d220c9c3bdf8?auto=format&fit=crop&w=1920&q=80')",
-            filter: 'brightness(0.28)'
+            backgroundImage: "url('/images/brand-inspiration.jpg')",
+            filter: 'brightness(0.34) saturate(0.9)'
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-midnight/20 via-midnight/50 to-midnight" />
+        <div className="absolute inset-0 bg-gradient-to-b from-midnight/15 via-midnight/55 to-midnight" />
         <div className="relative mx-auto w-full max-w-6xl">
           <h1 className="max-w-4xl font-display text-5xl font-bold leading-[0.95] tracking-tight text-white sm:text-7xl">
             Where music
             <br />
-            <span className="text-cyanflash">becomes community.</span>
+            <span className="text-acid">becomes community.</span>
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-slate-200">
             Group Therapy Events is a community-driven collective curating safe, inclusive spaces for connection through
@@ -53,7 +52,7 @@ export function HomePage(): JSX.Element {
             <button
               type="button"
               onClick={() => scrollToSection('events')}
-              className="rounded-md bg-white px-6 py-3 text-sm font-semibold text-midnight transition hover:bg-slate-200"
+              className="rounded-md bg-acid px-6 py-3 text-sm font-semibold text-midnight transition hover:bg-[#c49a58]"
             >
               View Upcoming Events
             </button>
@@ -80,8 +79,8 @@ export function HomePage(): JSX.Element {
           </div>
           <div className="h-[380px] overflow-hidden rounded-sm border border-white/10">
             <img
-              src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1080&q=80"
-              alt="Crowd and stage lighting"
+              src="/images/brand-inspiration.jpg"
+              alt="Abstract landscape textures"
               className="h-full w-full object-cover"
             />
           </div>
@@ -98,7 +97,7 @@ export function HomePage(): JSX.Element {
               with each other through curated gatherings.
             </p>
           </article>
-          <article className="rounded-sm border border-white/10 bg-ink/30 p-6">
+          <article className="rounded-sm border border-acid/35 bg-ink/30 p-6">
             <p className="text-xs uppercase tracking-[0.18em] text-slate-400">Flagship Series</p>
             <h3 className="mt-3 text-2xl font-semibold text-white">Chai Rave Club</h3>
             <p className="mt-3 text-slate-300">
@@ -129,7 +128,7 @@ export function HomePage(): JSX.Element {
                   className="grid gap-6 border border-white/10 bg-midnight/40 p-6 transition hover:border-white/30 md:grid-cols-[88px_1fr_auto] md:items-center"
                 >
                   <div className="text-center">
-                    <p className="font-display text-5xl font-bold text-cyanflash">{day}</p>
+                    <p className="font-display text-5xl font-bold text-acid">{day}</p>
                     <p className="text-xs tracking-[0.2em] text-slate-400">{month}</p>
                   </div>
                   <div>
@@ -142,7 +141,7 @@ export function HomePage(): JSX.Element {
                     target="_blank"
                     rel="noreferrer"
                     onClick={() => trackPartifulClick(event.title, event.slug)}
-                    className="inline-flex items-center justify-center rounded-md bg-white px-5 py-3 text-sm font-semibold text-midnight transition hover:bg-slate-200"
+                    className="inline-flex items-center justify-center rounded-md bg-acid px-5 py-3 text-sm font-semibold text-midnight transition hover:bg-[#c49a58]"
                   >
                     Open Partiful
                   </a>
