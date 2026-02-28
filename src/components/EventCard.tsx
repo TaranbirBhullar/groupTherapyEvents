@@ -10,19 +10,19 @@ interface EventCardProps {
 
 export function EventCard({ event, priorityPartiful = false }: EventCardProps): JSX.Element {
   const statusClass = event.status === 'cancelled'
-    ? 'bg-red-500/20 text-red-200 border border-red-400/30'
+    ? 'bg-white/5 text-slate-300 border border-white/20'
     : event.status === 'past'
-      ? 'bg-slate-500/20 text-slate-200 border border-slate-300/20'
-      : 'bg-acid/20 text-acid border border-acid/40';
+      ? 'bg-white/5 text-slate-300 border border-white/20'
+      : 'bg-white/5 text-slate-200 border border-white/20';
 
   return (
-    <article className="relative overflow-hidden rounded-xl border border-white/10 bg-ink shadow-neon transition">
+    <article className="relative overflow-hidden rounded-xl border border-white/10 bg-ink transition hover:border-white/20">
       <Link to={`/events/${event.slug}`} className="absolute inset-0 z-10" aria-label={`View details for ${event.title}`} />
       <img src={event.image} alt={event.title} className="h-52 w-full object-cover" />
       <div className="space-y-4 p-5">
         <div className="flex items-center justify-between gap-3">
           <h3 className="font-display text-xl font-bold text-white">{event.title}</h3>
-          <span className={`rounded-full px-2 py-1 text-xs font-semibold uppercase tracking-wide ${statusClass}`}>
+          <span className={`rounded-full px-2 py-1 text-xs font-medium tracking-wide ${statusClass}`}>
             {event.status}
           </span>
         </div>
@@ -35,17 +35,17 @@ export function EventCard({ event, priorityPartiful = false }: EventCardProps): 
             target="_blank"
             rel="noreferrer"
             onClick={() => trackPartifulClick(event.title, event.slug)}
-            className={`rounded-lg px-4 py-2 text-sm font-bold uppercase tracking-wide text-midnight transition ${
-              priorityPartiful ? 'bg-acid hover:bg-slate-300' : 'bg-cyanflash hover:bg-slate-400'
+            className={`rounded-lg px-4 py-2 text-sm font-semibold text-midnight transition ${
+              priorityPartiful ? 'bg-white hover:bg-slate-200' : 'bg-slate-300 hover:bg-slate-200'
             }`}
           >
-            Open on Partiful
+            Open Partiful
           </a>
           <Link
             to={`/events/${event.slug}`}
             className="rounded-lg border border-white/20 px-3 py-2 text-sm font-medium text-slate-200 transition hover:border-white/40"
           >
-            Details
+            View details
           </Link>
         </div>
       </div>
