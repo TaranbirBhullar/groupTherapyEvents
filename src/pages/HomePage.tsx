@@ -22,6 +22,22 @@ export function HomePage(): JSX.Element {
         </div>
       </section>
 
+      <section className="grid gap-4 md:grid-cols-2">
+        <article className="rounded-2xl border border-cyanflash/20 bg-ink/80 p-6">
+          <p className="mb-2 text-xs font-semibold uppercase tracking-[0.16em] text-cyanflash">Who It&apos;s For</p>
+          <p className="text-slate-200">
+            Ravers who want the next 2-3 events fast, plus crews who share lineups and need one clean link hub.
+          </p>
+        </article>
+        <article className="rounded-2xl border border-acid/20 bg-ink/80 p-6">
+          <p className="mb-2 text-xs font-semibold uppercase tracking-[0.16em] text-acid">Why It&apos;s Worth It</p>
+          <p className="text-slate-200">
+            You skip hunt-and-scroll time by opening each event&apos;s Partiful in one click, with dates and location context
+            visible immediately.
+          </p>
+        </article>
+      </section>
+
       <section className="space-y-4">
         <div className="flex items-end justify-between">
           <h2 className="font-display text-2xl font-bold text-white">Next 2-3 Events</h2>
