@@ -1,55 +1,149 @@
-import { Link } from 'react-router-dom';
-import { EventCard } from '../components/EventCard';
+import { trackPartifulClick } from '../lib/analytics';
+import { formatEventDate } from '../lib/date';
 import { getUpcomingEvents } from '../lib/eventsService';
 
 export function HomePage(): JSX.Element {
   const featuredEvents = getUpcomingEvents(3);
+  const scrollToSection = (id: string): void => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
 
   return (
-    <div className="space-y-8">
-      <section className="rounded-2xl border border-white/10 bg-ink p-8">
-        <p className="mb-3 text-sm font-medium text-slate-300">Group Therapy Events</p>
-        <h1 className="max-w-3xl font-display text-4xl font-semibold text-white sm:text-5xl">
-          Find what&apos;s happening. Bring your people.
-        </h1>
-        <p className="mt-4 max-w-2xl text-base text-slate-300">
-          A direct event board for community nights. Open each event&apos;s Partiful page in one click.
-        </p>
-        <div className="mt-6 flex flex-wrap gap-3">
-          <Link to="/events" className="rounded-lg bg-white px-4 py-2 text-sm font-semibold text-midnight hover:bg-slate-200">
-            Browse events
-          </Link>
-          <Link to="/events" className="rounded-lg border border-white/20 px-4 py-2 text-sm font-semibold text-slate-100 hover:bg-white/5">
-            View calendar
-          </Link>
+    <div className="bg-midnight text-slate-100">
+      <nav className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-midnight/70 px-6 py-5 backdrop-blur sm:px-8">
+        <div className="mx-auto flex w-full max-w-6xl items-center justify-between">
+          <button
+            type="button"
+            onClick={() => scrollToSection('top')}
+            className="font-display text-xl font-bold tracking-tight text-white"
+          >
+            GROUP <span className="text-cyanflash">THERAPY</span>
+          </button>
+          <div className="flex gap-6 text-sm text-slate-200">
+            <button type="button" onClick={() => scrollToSection('events')} className="hover:text-white">Events</button>
+            <button type="button" onClick={() => scrollToSection('about')} className="hover:text-white">About</button>
+            <button type="button" onClick={() => scrollToSection('contact')} className="hover:text-white">Contact</button>
+          </div>
+        </div>
+      </nav>
+
+      <section id="top" className="relative flex min-h-screen items-center overflow-hidden px-6 pt-24 sm:px-8">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage:
+              "url('https://images.unsplash.com/photo-1571266028243-d220c9c3bdf8?auto=format&fit=crop&w=1920&q=80')",
+            filter: 'brightness(0.28)'
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-midnight/20 via-midnight/50 to-midnight" />
+        <div className="relative mx-auto w-full max-w-6xl">
+          <h1 className="max-w-4xl font-display text-5xl font-bold leading-[0.95] tracking-tight text-white sm:text-7xl">
+            Where music
+            <br />
+            <span className="text-cyanflash">becomes community.</span>
+          </h1>
+          <p className="mt-6 max-w-2xl text-lg text-slate-200">
+            A focused event board for intentional nights. See what&apos;s next and open Partiful instantly.
+          </p>
+          <div className="mt-10 flex flex-wrap gap-4">
+            <button
+              type="button"
+              onClick={() => scrollToSection('events')}
+              className="rounded-md bg-white px-6 py-3 text-sm font-semibold text-midnight transition hover:bg-slate-200"
+            >
+              View Upcoming Events
+            </button>
+            <button
+              type="button"
+              onClick={() => scrollToSection('about')}
+              className="rounded-md border border-white/30 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
+            >
+              Explore Our World
+            </button>
+          </div>
         </div>
       </section>
 
-      <section className="grid gap-4 md:grid-cols-2">
-        <article className="rounded-2xl border border-white/10 bg-ink p-6">
-          <p className="mb-2 text-sm font-semibold text-slate-300">Who it&apos;s for</p>
-          <p className="text-slate-200">
-            People who care about culture-forward events and friend groups that want one reliable place to plan together.
-          </p>
-        </article>
-        <article className="rounded-2xl border border-white/10 bg-ink p-6">
-          <p className="mb-2 text-sm font-semibold text-slate-300">Why it&apos;s worth it</p>
-          <p className="text-slate-200">
-            Faster decisions and better turnout: key details are visible instantly, and every event links directly to
-            Partiful without extra steps.
-          </p>
-        </article>
+      <section id="about" className="px-6 py-24 sm:px-8">
+        <div className="mx-auto grid w-full max-w-6xl gap-12 lg:grid-cols-2 lg:items-center">
+          <div>
+            <h2 className="font-display text-4xl font-bold tracking-tight text-white sm:text-5xl">Who we are</h2>
+            <p className="mt-6 text-lg text-slate-200">
+              Group Therapy is more than events. It&apos;s a shared space for connection through sound, movement, and culture.
+            </p>
+            <p className="mt-4 text-base text-slate-400">Built by community, for community.</p>
+          </div>
+          <div className="h-[380px] overflow-hidden rounded-sm border border-white/10">
+            <img
+              src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1080&q=80"
+              alt="Crowd and stage lighting"
+              className="h-full w-full object-cover"
+            />
+          </div>
+        </div>
       </section>
 
-      <section className="space-y-4">
-        <div className="flex items-end justify-between">
-          <h2 className="font-display text-2xl font-semibold text-white">Upcoming now</h2>
-          <Link to="/events" className="text-sm font-medium text-slate-300 hover:text-white">See all</Link>
+      <section id="events" className="border-y border-white/10 bg-ink/60 px-6 py-24 sm:px-8">
+        <div className="mx-auto w-full max-w-6xl">
+          <h2 className="text-center font-display text-4xl font-bold tracking-tight text-white sm:text-5xl">
+            Upcoming events
+          </h2>
+          <div className="mt-12 space-y-5">
+            {featuredEvents.map((event) => {
+              const dateObj = new Date(event.datetime);
+              const day = new Intl.DateTimeFormat('en-US', { day: '2-digit' }).format(dateObj);
+              const month = new Intl.DateTimeFormat('en-US', { month: 'short' }).format(dateObj).toUpperCase();
+
+              return (
+                <article
+                  key={event.id}
+                  className="grid gap-6 border border-white/10 bg-midnight/40 p-6 transition hover:border-white/30 md:grid-cols-[88px_1fr_auto] md:items-center"
+                >
+                  <div className="text-center">
+                    <p className="font-display text-5xl font-bold text-cyanflash">{day}</p>
+                    <p className="text-xs tracking-[0.2em] text-slate-400">{month}</p>
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-semibold text-white">{event.title}</h3>
+                    <p className="mt-2 text-sm text-slate-300">{event.location}</p>
+                    <p className="text-sm text-slate-400">{formatEventDate(event.datetime, event.timezone)}</p>
+                  </div>
+                  <a
+                    href={event.partifulUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    onClick={() => trackPartifulClick(event.title, event.slug)}
+                    className="inline-flex items-center justify-center rounded-md bg-white px-5 py-3 text-sm font-semibold text-midnight transition hover:bg-slate-200"
+                  >
+                    Open Partiful
+                  </a>
+                </article>
+              );
+            })}
+          </div>
         </div>
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {featuredEvents.map((event) => (
-            <EventCard key={event.id} event={event} priorityPartiful />
-          ))}
+      </section>
+
+      <section id="contact" className="px-6 py-24 sm:px-8">
+        <div className="mx-auto grid w-full max-w-6xl gap-12 lg:grid-cols-2">
+          <div>
+            <h2 className="font-display text-4xl font-bold tracking-tight text-white sm:text-5xl">Get in touch</h2>
+            <p className="mt-5 max-w-lg text-slate-300">
+              Want to collaborate, host, or share a future lineup? Reach us directly and we&apos;ll follow up.
+            </p>
+          </div>
+          <div className="space-y-4 rounded-sm border border-white/10 bg-ink/40 p-6">
+            <a className="block border border-white/10 px-4 py-3 text-slate-200 hover:border-white/30" href="mailto:hello@grouptherapyevents.com">
+              hello@grouptherapyevents.com
+            </a>
+            <a className="block border border-white/10 px-4 py-3 text-slate-200 hover:border-white/30" href="https://instagram.com/grouptherapy" target="_blank" rel="noreferrer">
+              Instagram
+            </a>
+            <a className="block border border-white/10 px-4 py-3 text-slate-200 hover:border-white/30" href="https://partiful.com" target="_blank" rel="noreferrer">
+              Partiful
+            </a>
+          </div>
         </div>
       </section>
     </div>
