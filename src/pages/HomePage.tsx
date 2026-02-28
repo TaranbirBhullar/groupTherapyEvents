@@ -8,12 +8,12 @@ export function HomePage(): JSX.Element {
   return (
     <div className="space-y-10">
       <section className="rounded-3xl border border-cyanflash/30 bg-ink/70 p-8 shadow-neon">
-        <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-cyanflash">Bay Area Rave Signal</p>
+        <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-cyanflash">Group Therapy Events</p>
         <h1 className="max-w-2xl font-display text-4xl font-extrabold text-white sm:text-5xl">
-          Upcoming Raves With Fast Partiful Access
+          Elegant Event Discovery For Connected Communities
         </h1>
         <p className="mt-4 max-w-2xl text-base text-slate-300">
-          Tap into the next events and open each Partiful page in one click. No friction, just the next dance floor.
+          Discover upcoming gatherings, keep your crew in sync, and jump to each Partiful page in one click.
         </p>
         <div className="mt-6">
           <Link to="/events" className="rounded-lg border border-acid px-4 py-2 font-semibold text-acid hover:bg-acid/10">
@@ -26,14 +26,14 @@ export function HomePage(): JSX.Element {
         <article className="rounded-2xl border border-cyanflash/20 bg-ink/80 p-6">
           <p className="mb-2 text-xs font-semibold uppercase tracking-[0.16em] text-cyanflash">Who It&apos;s For</p>
           <p className="text-slate-200">
-            Ravers who want the next 2-3 events fast, plus crews who share lineups and need one clean link hub.
+            People who care about culture-forward events and friend groups that want one reliable place to plan together.
           </p>
         </article>
         <article className="rounded-2xl border border-acid/20 bg-ink/80 p-6">
           <p className="mb-2 text-xs font-semibold uppercase tracking-[0.16em] text-acid">Why It&apos;s Worth It</p>
           <p className="text-slate-200">
-            You skip hunt-and-scroll time by opening each event&apos;s Partiful in one click, with dates and location context
-            visible immediately.
+            Faster decisions and better turnout: key details are visible instantly, and every event links directly to
+            Partiful without extra steps.
           </p>
         </article>
       </section>

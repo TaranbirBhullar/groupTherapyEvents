@@ -1,6 +1,6 @@
-# ChaiRave
+# Group Therapy Events
 
-Static TypeScript website for promoting rave events with fast Partiful access.
+Static TypeScript website for promoting events with fast Partiful access.
 
 ## Local development
 
