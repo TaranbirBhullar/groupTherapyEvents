@@ -1,40 +1,10 @@
-import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { chaiRaveInstagramPosts, chaiRaveInstagramProfile } from '../data/chaiRaveInstagram';
+import { chaiRaveInstagramProfile } from '../data/chaiRaveInstagram';
 import { formatEventDate } from '../lib/date';
 import { getPastEvents } from '../lib/eventsService';
 
-declare global {
-  interface Window {
-    instgrm?: {
-      Embeds?: {
-        process: () => void;
-      };
-    };
-  }
-}
-
 export function ChaiRavePage(): JSX.Element {
   const pastEvents = getPastEvents().slice(0, 4);
-
-  useEffect(() => {
-    if (chaiRaveInstagramPosts.length === 0) {
-      return;
-    }
-
-    const existingScript = document.querySelector<HTMLScriptElement>('script[data-instgrm-embed="true"]');
-    if (existingScript && window.instgrm?.Embeds) {
-      window.instgrm.Embeds.process();
-      return;
-    }
-
-    const script = document.createElement('script');
-    script.async = true;
-    script.src = 'https://www.instagram.com/embed.js';
-    script.dataset.instgrmEmbed = 'true';
-    script.onload = () => window.instgrm?.Embeds?.process();
-    document.body.appendChild(script);
-  }, []);
 
   return (
     <div className="space-y-10">
@@ -79,30 +49,15 @@ export function ChaiRavePage(): JSX.Element {
             Open Instagram
           </a>
         </div>
-
-        {chaiRaveInstagramPosts.length === 0 ? (
-          <div className="rounded-sm border border-white/10 bg-midnight/40 p-6">
-            <p className="text-slate-300">
-              Add recent Instagram post URLs in <code>src/data/chaiRaveInstagram.ts</code> to render the recap feed.
-            </p>
-          </div>
-        ) : (
-          <div className="grid gap-5 md:grid-cols-2">
-            {chaiRaveInstagramPosts.map((post) => (
-              <article key={post.id} className="overflow-hidden rounded-sm border border-white/10 bg-midnight/40 p-3">
-                <blockquote
-                  className="instagram-media !m-0 !min-w-0"
-                  data-instgrm-permalink={post.url}
-                  data-instgrm-version="14"
-                >
-                  <a href={post.url} target="_blank" rel="noreferrer">
-                    {post.label}
-                  </a>
-                </blockquote>
-              </article>
-            ))}
-          </div>
-        )}
+        <div className="overflow-hidden rounded-sm border border-white/10 bg-midnight/40">
+          <iframe
+            title="Chai Rave Club Instagram Feed"
+            src={`${chaiRaveInstagramProfile.replace(/\/$/, '')}/embed`}
+            className="h-[900px] w-full"
+            loading="lazy"
+            allowTransparency
+          />
+        </div>
       </section>
     </div>
   );
